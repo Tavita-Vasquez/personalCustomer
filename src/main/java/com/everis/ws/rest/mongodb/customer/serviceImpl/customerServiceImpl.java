@@ -4,12 +4,14 @@ import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.stereotype.Service;
 
 import com.everis.ws.rest.mongodb.customer.model.Customer;
 import com.everis.ws.rest.mongodb.customer.repository.customerRepostiroy;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Service
 public class customerServiceImpl implements CustomerService {
 
 	@Autowired
@@ -29,14 +31,14 @@ public class customerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Mono<Customer> update(Long id, Customer customerpersonal) {
+	public Mono<Customer> update(String id, Customer customerpersonal) {
 		// TODO Auto-generated method stub
 		return  repository.save(customerpersonal);
 	}
 
 	
 	@Override
-	public Mono delete(Long id) {
+	public Mono delete(String id) {
 		// TODO Auto-generated method stub
 		Mono delete=null;
 		 final Mono<Customer> dbcustomerPersonal = getById(id);
@@ -49,10 +51,15 @@ public class customerServiceImpl implements CustomerService {
 		  return delete;
 	}
 	
-	@Override
 	public Mono<Customer> getById(Long id) {
 		// TODO Auto-generated method stub
 		return repository.findById(id);
+	}
+
+	@Override
+	public Mono<Customer> getById(String id) {
+		// TODO Auto-generated method stub
+		return null;//repository.findById(id);
 	}
 	 
 	

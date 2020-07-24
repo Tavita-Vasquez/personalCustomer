@@ -36,7 +36,7 @@ public class customerController {
 	
 	
  	@PutMapping("/update/{id}")
-	public Mono<Customer> updateById(@PathVariable("id") final Long id, @RequestBody final Customer personalCustomer) {
+	public Mono<Customer> updateById(@PathVariable("id") final String id, @RequestBody final Customer personalCustomer) {
 	System.out.println("::Update the Customer record::");
 	return registrationService.update(id, personalCustomer);
 	}
@@ -44,7 +44,7 @@ public class customerController {
 	
 	
 	@DeleteMapping("/delete/{id}")
-	public Mono<Customer> delete(@PathVariable final Long id) {
+	public Mono<Customer> delete(@PathVariable final String id) {
 	System.out.println("::Will delete a personalCustomer  ::");
 	return registrationService.delete(id);
 	}
