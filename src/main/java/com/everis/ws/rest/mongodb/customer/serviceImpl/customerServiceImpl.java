@@ -1,11 +1,11 @@
 package com.everis.ws.rest.mongodb.customer.serviceImpl;
 
 import java.util.Objects;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
-
 import com.everis.ws.rest.mongodb.customer.model.Customer;
 import com.everis.ws.rest.mongodb.customer.repository.customerRepostiroy;
 import reactor.core.publisher.Flux;
@@ -20,9 +20,27 @@ public class customerServiceImpl implements CustomerService {
 	 @Autowired
 	 MessageSource i18n;
 	 
+	//log
+			private static final Logger log=(Logger) LogManager.getLogger(customerServiceImpl.class);
+
+	 
 	@Override
-	public Mono<Customer> create(Customer customerpersonal) {
-		return repository.save(customerpersonal);
+	public Mono<Customer> create(Customer customerpersonal){
+		log.info("Begin service save of customer personal.");
+		Mono<Customer> saved = null;
+		
+		try {
+			
+				saved = repository.save(customerpersonal);
+				log.info("Save Correct Customer Personal.");
+			
+		}catch(Exception e) {
+			log.error("Error when saving Bank Account in data base.");
+			
+		}
+		return saved;
+		
+		
 	}
 
 	@Override
@@ -51,17 +69,13 @@ public class customerServiceImpl implements CustomerService {
 		  return delete;
 	}
 	
-	public Mono<Customer> getById(Long id) {
-		// TODO Auto-generated method stub
-		return repository.findById(id);
-	}
-
 	@Override
 	public Mono<Customer> getById(String id) {
 		// TODO Auto-generated method stub
 		return null;//repository.findById(id);
 	}
-	 
+	
+	
 	
 }
   

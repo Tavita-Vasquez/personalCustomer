@@ -19,26 +19,26 @@ import reactor.core.publisher.Mono;
 public class customerController {
 	
 	@Autowired
-	private customerServiceImpl registrationService;
+	private customerServiceImpl customerservice;
 	
 	@PostMapping("/save")
 	public Mono<Customer> save(@RequestBody final Customer personalCustomer) {
 	System.out.println("Will register the personalCustomer :: "+ personalCustomer.toString());
-	return registrationService.create(personalCustomer);
+	return customerservice.create(personalCustomer);
 	}
 	
 	
 	@GetMapping("/all")
 	public Flux<Customer> getAll() {
 	System.out.println("::GET_ALL Customer::");
-	return registrationService.findAll();
+	return customerservice.findAll();
 	}
 	
 	
  	@PutMapping("/update/{id}")
 	public Mono<Customer> updateById(@PathVariable("id") final String id, @RequestBody final Customer personalCustomer) {
 	System.out.println("::Update the Customer record::");
-	return registrationService.update(id, personalCustomer);
+	return customerservice.update(id, personalCustomer);
 	}
 	
 	
@@ -46,14 +46,21 @@ public class customerController {
 	@DeleteMapping("/delete/{id}")
 	public Mono<Customer> delete(@PathVariable final String id) {
 	System.out.println("::Will delete a personalCustomer  ::");
-	return registrationService.delete(id);
+	return customerservice.delete(id);
 	}
 	
 	
 	@GetMapping("/findById/{id}")
-	public Mono<Customer> findById(@PathVariable final Long id) {
+	public Mono<Customer> findById(@PathVariable final String id) {
 	System.out.println("::Will personalCustomer a personalCustomer  ::");
-	return registrationService.getById(id);
+	return customerservice.getById(id);
+	}
+	
+	
+	@GetMapping("/events/{id}")
+	public Flux<Customer> getEvents(@PathVariable final String id) {
+	System.out.println("::GET_ALL Customer Por ID .::");
+	return customerservice.findAll();
 	}
 	
 	

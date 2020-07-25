@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.everis.ws.rest.mongodb.customer.model.Customer;
 
 @Repository
-public interface customerRepostiroy extends ReactiveMongoRepository<Customer, Long>  {
+public interface customerRepostiroy extends ReactiveMongoRepository<Customer, String>  {
 
 }
