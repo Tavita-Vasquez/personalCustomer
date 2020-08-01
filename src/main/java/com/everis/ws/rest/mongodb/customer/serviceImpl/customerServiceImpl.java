@@ -12,7 +12,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
-public class customerServiceImpl implements CustomerService {
+public class customerServiceImpl implements ICustomerService {
 
 	@Autowired
 	private customerRepostiroy repository;

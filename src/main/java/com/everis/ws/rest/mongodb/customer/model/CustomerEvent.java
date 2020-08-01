@@ -24,30 +24,5 @@ public class CustomerEvent {
 	private Date date;
 	
 	
-	
-	public CustomerEvent() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public CustomerEvent(Customer customer, Date date) {
-		super();
-		this.customer = customer;
-		this.date = date;
-	}
-	
-	public Customer getCustomer() {
-		return customer;
-	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
-	
-	
+		
 }

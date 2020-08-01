@@ -9,11 +9,10 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
-public interface CustomerService {
+public interface ICustomerService {
 	 Mono<Customer> create(Customer personalCustomer);
 	 Flux<Customer> findAll();
 	 Mono<Customer> update(String id, Customer personalCustomer);
 	 Mono<Customer> getById(String id);
-	 Mono delete(String id);
-	 
+	 Mono delete(String id); 
 }
